@@ -1,38 +1,36 @@
-import { LoaderModule } from './core/loader/loader.module';
-import { PageContentComponent } from './core/page-content/page-content.component';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatCardModule } from '@angular/material/card';
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { BoardUserComponent } from './board-user/board-user.component';
-
 import { authInterceptorProviders } from './core/_helpers/auth.interceptor';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {MatInputModule } from '@angular/material/input'
+import { LoaderModule } from './core/loader/loader.module';
+import { PageContentComponent } from './core/page-content/page-content.component';
 import { AdminEquipeComponent } from './features/admin/admin-equipe/admin-equipe.component';
 import { ListaEquipeComponent } from './features/admin/admin-equipe/lista-equipe/lista-equipe.component';
-import { ListaClientesComponent } from './features/admin/lista-clientes/lista-clientes.component';
 import { AdminServicosComponent } from './features/admin/admin-servicos/admin-servicos.component';
+import { ListaClientesComponent } from './features/admin/lista-clientes/lista-clientes.component';
 import { CadastrarCarroComponent } from './features/cliente/cadastrar-carro/cadastrar-carro.component';
-import { LoaderComponent } from './core/loader/loader.component';
-import { MatSelectModule } from '@angular/material/select';
+import { ListaCarrosComponent } from './features/cliente/lista-carros/lista-carros.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +47,8 @@ import { MatSelectModule } from '@angular/material/select';
     ListaClientesComponent,
     PageContentComponent,
     AdminServicosComponent,
-    CadastrarCarroComponent
+    CadastrarCarroComponent,
+    ListaCarrosComponent
   ],
   imports: [
     BrowserModule,

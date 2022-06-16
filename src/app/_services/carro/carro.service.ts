@@ -1,3 +1,5 @@
+import { CarroResponse } from './../../models/carro/carro-response.model';
+import { Carro } from './../../models/carro/carro.model';
 import { MarcaCarro } from './../../models/carro/marca-carro.model';
 import { ModeloCarro } from './../../models/carro/modelo-carro.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -24,6 +26,11 @@ export class CarroService {
 
   getModelosByMarca(idMarca): Observable<ModeloCarro[]> {
     return this.http.post<ModeloCarro[]>(CARRO_API + `modelo/get-by-marca?idMarca=${idMarca}`, {
+    }, httpOptions);
+  }
+
+  getCarrosByPessoa(idPessoa): Observable<CarroResponse[]> {
+    return this.http.post<CarroResponse[]>(CARRO_API + `get-by-pessoa?idPessoa=${idPessoa}`, {
     }, httpOptions);
   }
 

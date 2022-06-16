@@ -4,7 +4,7 @@ import { ModeloCarro } from './modelo-carro.model';
 export interface Carro {
   id: number;
   placa: string;
-  anoModelo?: number;
+  anoModelo?: string;
   modelo: ModeloCarro;
   proprietario: Pessoa;
 }

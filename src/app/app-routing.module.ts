@@ -1,3 +1,4 @@
+import { ListaCarrosComponent } from './features/cliente/lista-carros/lista-carros.component';
 import { CadastrarCarroComponent } from './features/cliente/cadastrar-carro/cadastrar-carro.component';
 import { AdminServicosComponent } from './features/admin/admin-servicos/admin-servicos.component';
 import { NgModule } from '@angular/core';
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'admin', component: BoardAdminComponent },
   { path: 'admin/equipe', component: AdminEquipeComponent},
   { path: 'admin/servicos', component: AdminServicosComponent},
-  { path: 'cliente/carros', component: CadastrarCarroComponent},
+  { path: 'cliente/novo-carro', component: CadastrarCarroComponent},
+  { path: 'cliente/carros', component: ListaCarrosComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

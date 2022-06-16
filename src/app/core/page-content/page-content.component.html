@@ -1,15 +1,11 @@
 <div fxLayout="row" mat-typography >
   <div fxLayout="column">
-    <h1>{{titulo}}</h1>
+    <mat-card-title>{{titulo}}</mat-card-title>
   </div>
 </div>
 
-<mat-divider></mat-divider>
+<br/>
 
 <mat-card class="page-content">
-  <mat-divider></mat-divider>
-
   <ng-content></ng-content>
-
-  <mat-divider></mat-divider>
 </mat-card>

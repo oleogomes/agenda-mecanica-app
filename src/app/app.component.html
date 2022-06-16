@@ -12,14 +12,11 @@
         <a href="/admin/servicos" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/servicos">Serviços</a>
       </li>
       <li class="nav-item">
-        <a href="/cliente/carros" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/carros">Carros</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a href="/admin/clientes" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/clientes">Clientes</a>
+        <a href="/cliente/novo-carro" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/novo-carro">Cadastrar carro</a>
       </li>
       <li class="nav-item">
-        <a href="/admin/servicos" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/servicos">Serviços</a>
-      </li> -->
+        <a href="/cliente/carros" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/carros">Meus carros</a>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">

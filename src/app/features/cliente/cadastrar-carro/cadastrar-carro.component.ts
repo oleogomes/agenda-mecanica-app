@@ -1,12 +1,12 @@
-import { ModeloCarro } from './../../../models/carro/modelo-carro.model';
-import { MarcaCarro } from './../../../models/carro/marca-carro.model';
-import { CarroService } from './../../../_services/carro/carro.service';
-import { TokenStorageService } from './../../../_services/token/token-storage.service';
-import { UserService } from './../../../_services/user/user.service';
-import { CadastrarCarro } from './../../../models/carro/cadastrar-carro.model';
-import { ClienteService } from './../../../_services/cliente/cliente.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { CarroService } from './../../../_services/carro/carro.service';
+import { ClienteService } from './../../../_services/cliente/cliente.service';
+import { TokenStorageService } from './../../../_services/token/token-storage.service';
+import { CadastrarCarro } from './../../../models/carro/cadastrar-carro.model';
+import { MarcaCarro } from './../../../models/carro/marca-carro.model';
+import { ModeloCarro } from './../../../models/carro/modelo-carro.model';
 
 @Component({
   selector: 'app-cadastrar-carro',
@@ -65,13 +65,14 @@ export class CadastrarCarroComponent implements OnInit {
     });
   }
 
-
-
   cadastrarCarro(): void {
     if (this.form.valid) {
       this.isLoading = true;
       const request = this.montaRequest();
       this.clienteService.cadastrarCarro(request).subscribe({
+        next: (data) => {
+          this.isLoading = false;
+        }
     });
 
     }
