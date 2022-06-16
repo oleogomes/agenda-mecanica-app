@@ -1,0 +1,16 @@
+<app-page-content titulo="Equipe">
+
+  <div *ngIf="!mostrarForm">
+    <app-lista-equipe></app-lista-equipe>
+  </div>
+
+  <div class="botoes">
+    <button mat-raised-button color="primary" (click)="cadastrarMecanico()">
+      Cadastrar mecânico
+    </button>
+  </div>
+
+  <div *ngIf="mostrarForm">
+    <app-register role="ROLE_MECANICO"></app-register>
+  </div>
+</app-page-content>

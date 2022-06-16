@@ -1,0 +1,25 @@
+<app-page-content titulo="Cadastrar novo serviço">
+<form [formGroup]="form" class="example-form">
+
+  <p>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <textarea formControlName="descricao" matInput placeholder="Ex. Troca de óleo">
+      </textarea>
+    </mat-form-field>
+  </p>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Tempo</mat-label>
+      <input type="number" matInput formControlName="tempoServico">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Valor</mat-label>
+      <input type="number" matInput formControlName="valor">
+    </mat-form-field></td>
+  </tr></table>
+
+  <button mat-button (click)="cadastrarServico()">Cadastrar</button>
+</form>
+</app-page-content>

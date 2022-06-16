@@ -1,0 +1,37 @@
+<app-page-content titulo="Cadastrar carro">
+  <form [formGroup]="form" class="example-form">
+
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Placa</mat-label>
+        <textarea formControlName="placa" matInput placeholder="Ex. Troca de óleo">
+        </textarea>
+      </mat-form-field>
+    </p>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Ano modelo</mat-label>
+        <input matInput formControlName="anoModelo">
+      </mat-form-field></td>
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Marca</mat-label>
+        <mat-select formControlName="marca" name="marca">
+          <mat-option *ngFor="let marca of marcasCarro" [value]="marca.id">
+            {{marca.descricao}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="example-full-width">
+        <mat-label>Modelo</mat-label>
+        <mat-select [disabled]="!form.get('marca').value" formControlName="codigoModeloCarro" name="modelo">
+          <mat-option *ngFor="let modelo of modelosCarro" [value]="modelo.id">
+            {{modelo.descricao}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </tr></table>
+
+    <button mat-button (click)="cadastrarCarro()">Cadastrar</button>
+  </form>
+  </app-page-content>

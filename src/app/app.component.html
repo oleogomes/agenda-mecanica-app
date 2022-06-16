@@ -1,0 +1,47 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">Mecânica Bayer</a>
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li class="nav-item">
+        <a href="/admin/equipe" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/equipe">Equipe</a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/clientes" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/clientes">Clientes</a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/servicos" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/servicos">Serviços</a>
+      </li>
+      <li class="nav-item">
+        <a href="/cliente/carros" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/carros">Carros</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a href="/admin/clientes" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/clientes">Clientes</a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/servicos" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/servicos">Serviços</a>
+      </li> -->
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()">LogOut</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
