@@ -1,3 +1,4 @@
+import { AtualizarServico } from './../../../models/servico/atualizar-servico.model';
 import { MecanicoService } from './../../../_services/mecanico/mecanico.service';
 import { ClienteService } from './../../../_services/cliente/cliente.service';
 import { TokenStorageService } from './../../../_services/token/token-storage.service';
@@ -14,33 +15,50 @@ export class MecanicoAgendaComponent implements OnInit {
 
   servicos: Servico[];
   isLoading = true;
-  displayedColumns: string[] = ['hora', 'carro', 'status', 'acoes', 'tipo'];
+  displayedColumns: string[] = ['hora', 'carro', 'tipo', 'status',  'acoes'];
 
-  constructor(private tokenService: TokenStorageService, mecanicoService: MecanicoService) { }
+  constructor(private tokenService: TokenStorageService, private mecanicoService: MecanicoService) { }
 
   ngOnInit(): void {
     this.getServicos();
   }
 
   getServicos(): void {
-    this.clienteService.getServicosCliente(this.getUsuarioLogado()).subscribe({
+    this.mecanicoService.getAgendaDia().subscribe({
       next: (servicos) => {
         this.servicos = servicos;
+        debugger;
         this.isLoading = false;
       }
     })
   }
 
-  getUsuarioLogado(){
+  getUsuarioLogado(): number{
    return this.tokenService.getUser().id;
   }
 
-  retornaCarro(carro: Carro) {
-    return carro.placa + ' - ' + carro.modelo.marcaCarro.descricao + '/' + carro.modelo.descricao + ' ' + carro.anoModelo;
+  retornaCarro(servico: Servico) {
+    return servico.carro.placa + ' - ' + servico.carro.modelo.marcaCarro.descricao + '/' + servico.carro.modelo.descricao + ' ' + servico.carro.anoModelo;
   }
 
-  retornaDataAtual() {
-    const data = Date.now();
+  retornaHora(servico: Servico) {
+    return servico.dataHora.getTime();
+  }
+
+  retornaServico(servico: Servico) {
+    return servico.tipoServico.descricao;
+  }
+
+  retonarStatus(servico: Servico) {
+    return servico.status.descricao;
+  }
+
+  iniciaServico(servico: Servico) {
+    const atualizarServico: AtualizarServico = {
+      id: servico.id,
+      idMecanico: this.getUsuarioLogado()
+    }
+    debugger;
   }
 
 }
