@@ -1,3 +1,4 @@
+import { MecanicoAgendaComponent } from './features/mecanico/mecanico-agenda/mecanico-agenda.component';
 import { ServicosClienteComponent } from './features/cliente/servicos-cliente/servicos-cliente.component';
 import { AgendarServicoComponent } from './features/cliente/agendar-servico/agendar-servico.component';
 import { ListaCarrosComponent } from './features/cliente/lista-carros/lista-carros.component';
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'cliente/carros', component: ListaCarrosComponent},
   { path: 'cliente/servicos/agendar', component: AgendarServicoComponent},
   { path: 'cliente/servicos/listar', component: ServicosClienteComponent},
+  { path: 'mecanico/agenda', component: MecanicoAgendaComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
