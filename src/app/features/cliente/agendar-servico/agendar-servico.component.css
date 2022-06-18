@@ -1,0 +1,4 @@
+.form-agendar-servico {
+  display: flex;
+  flex-direction: column;
+}

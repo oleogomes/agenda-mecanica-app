@@ -17,6 +17,12 @@
       <li class="nav-item">
         <a href="/cliente/carros" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/carros">Meus carros</a>
       </li>
+      <li class="nav-item">
+        <a href="/cliente/servicos/agendar" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/servicos/agendar">Agendar serviço</a>
+      </li>
+      <li class="nav-item">
+        <a href="/cliente/servicos/listar" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/servicos/listar">Meus serviços</a>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">

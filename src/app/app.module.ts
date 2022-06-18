@@ -3,6 +3,8 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -24,12 +26,15 @@ import { AdminEquipeComponent } from './features/admin/admin-equipe/admin-equipe
 import { ListaEquipeComponent } from './features/admin/admin-equipe/lista-equipe/lista-equipe.component';
 import { AdminServicosComponent } from './features/admin/admin-servicos/admin-servicos.component';
 import { ListaClientesComponent } from './features/admin/lista-clientes/lista-clientes.component';
+import { AgendarServicoComponent } from './features/cliente/agendar-servico/agendar-servico.component';
 import { CadastrarCarroComponent } from './features/cliente/cadastrar-carro/cadastrar-carro.component';
 import { ListaCarrosComponent } from './features/cliente/lista-carros/lista-carros.component';
+import { ServicosClienteComponent } from './features/cliente/servicos-cliente/servicos-cliente.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
+import { MecanicoAgendaComponent } from './features/mecanico/mecanico-agenda/mecanico-agenda.component';
 
 
 @NgModule({
@@ -48,7 +53,10 @@ import { RegisterComponent } from './register/register.component';
     PageContentComponent,
     AdminServicosComponent,
     CadastrarCarroComponent,
-    ListaCarrosComponent
+    ListaCarrosComponent,
+    AgendarServicoComponent,
+    ServicosClienteComponent,
+    MecanicoAgendaComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +73,11 @@ import { RegisterComponent } from './register/register.component';
     MatDividerModule,
     MatInputModule,
     LoaderModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, MatDatepickerModule],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,3 +1,5 @@
+import { ServicosClienteComponent } from './features/cliente/servicos-cliente/servicos-cliente.component';
+import { AgendarServicoComponent } from './features/cliente/agendar-servico/agendar-servico.component';
 import { ListaCarrosComponent } from './features/cliente/lista-carros/lista-carros.component';
 import { CadastrarCarroComponent } from './features/cliente/cadastrar-carro/cadastrar-carro.component';
 import { AdminServicosComponent } from './features/admin/admin-servicos/admin-servicos.component';
@@ -25,6 +27,8 @@ const routes: Routes = [
   { path: 'admin/servicos', component: AdminServicosComponent},
   { path: 'cliente/novo-carro', component: CadastrarCarroComponent},
   { path: 'cliente/carros', component: ListaCarrosComponent},
+  { path: 'cliente/servicos/agendar', component: AgendarServicoComponent},
+  { path: 'cliente/servicos/listar', component: ServicosClienteComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

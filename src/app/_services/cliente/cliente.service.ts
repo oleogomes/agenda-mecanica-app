@@ -1,3 +1,5 @@
+import { Servico } from './../../models/servico/servico.model';
+import { AgendarServico } from './../../models/servico/agendar-servico.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -24,5 +26,20 @@ export class ClienteService {
       codigoProprietario: carro.codigoProprietario,
       placa: carro.placa
     }, httpOptions);
+  }
+
+  agendarServico(servico: AgendarServico): Observable<any> {
+    return this.http.post(CLIENTE_API + 'servicos/agendar', {
+      idCarro: servico.idCarro,
+      idCliente: servico.idCliente,
+      idTipoServico: servico.idTipoServico,
+      dataHora: servico.datahora
+    }, httpOptions)
+  }
+
+  getServicosCliente(idCliente: number): Observable<Servico[]> {
+    return this.http.post<Servico[]>(CLIENTE_API + 'servicos/listar', {
+      idCliente: idCliente
+    }, httpOptions)
   }
 }
