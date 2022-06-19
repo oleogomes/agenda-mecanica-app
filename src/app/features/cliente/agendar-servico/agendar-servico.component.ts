@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AgendarServico } from './../../../models/servico/agendar-servico.model';
 import { TokenStorageService } from './../../../_services/token/token-storage.service';
 import { CarroResponse } from './../../../models/carro/carro-response.model';
@@ -33,11 +34,10 @@ export class AgendarServicoComponent implements OnInit {
   ];
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
-    // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
   };
 
-  constructor(private clienteService: ClienteService, private carroService: CarroService,
+  constructor(private clienteService: ClienteService, private carroService: CarroService, private router: Router,
     private servicoService: ServicoService, private formBuilder: FormBuilder, private tokenService: TokenStorageService ) { }
 
   ngOnInit(): void {
@@ -88,10 +88,10 @@ export class AgendarServicoComponent implements OnInit {
   agendarServico() {
     if(this.form.valid) {
       const servico = this.montaRequest();
-
       this.clienteService.agendarServico(servico).subscribe({
         next: (data) => {
-          alert('Serviço agendado com sucesso!') }
+          this.router.navigateByUrl('/cliente/servicos/listar')
+           }
       })
     }
   }

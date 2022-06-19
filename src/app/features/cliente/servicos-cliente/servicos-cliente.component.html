@@ -1,21 +1,25 @@
-
-<app-page-content titulo ="Meus servicos">
+<app-page-content titulo ="Meus serviços">
   <div *ngIf="!isLoading">
-    <table mat-table [dataSource]="servicos" class="mat-elevation-z8">
+    <table mat-table [dataSource]="this.servicos" class="mat-elevation-z8">
 
-      <ng-container matColumnDef="data">
-        <th mat-header-cell *matHeaderCellDef>Data</th>
-        <td mat-cell *matCellDef="let servico">{{ retornaData(servico.data) }}</td>
+      <ng-container matColumnDef="dataHora">
+        <th mat-header-cell *matHeaderCellDef>Dia</th>
+        <td mat-cell *matCellDef="let servico">{{retornaDataHora(servico)}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="placa">
+      <ng-container matColumnDef="carro">
         <th mat-header-cell *matHeaderCellDef>Carro</th>
-        <td mat-cell *matCellDef="let servico">{{retornaCarro(servico.carro)}}</td>
+        <td mat-cell *matCellDef="let servico">{{retornaCarro(servico)}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="tipo">
+        <th mat-header-cell *matHeaderCellDef>Servico</th>
+        <td mat-cell *matCellDef="let servico">{{servico.tipoServico.descricao}}</td>
       </ng-container>
 
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let servico">{{ servico.status.descricao }} </td>
+        <td mat-cell *matCellDef="let servico">{{ servico.status.descricao}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

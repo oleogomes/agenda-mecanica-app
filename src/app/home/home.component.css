@@ -1,0 +1,10 @@
+.card-home {
+  display: flex;
+  flex-direction: column;
+}
+
+.botoes-home {
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}

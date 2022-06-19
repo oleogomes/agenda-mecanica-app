@@ -72,9 +72,9 @@ export class CadastrarCarroComponent implements OnInit {
       this.clienteService.cadastrarCarro(request).subscribe({
         next: (data) => {
           this.isLoading = false;
+          this.form.reset();
         }
-    });
-
+      });
     }
   }
 
@@ -82,7 +82,7 @@ export class CadastrarCarroComponent implements OnInit {
     const carro: CadastrarCarro = {
       anoModelo: this.form.get('anoModelo').value,
       codigoModeloCarro: this.form.get('codigoModeloCarro').value,
-      placa: this.form.get('placa').value,
+      placa: this.montaPlaca(this.form.get('placa').value),
       codigoProprietario: this.retornarCodigoUsuarioLogado()
     }
     return carro;
@@ -92,6 +92,11 @@ export class CadastrarCarroComponent implements OnInit {
     const user = this.tokenService.getUser();
     debugger;
     return user.id;
+  }
+
+  montaPlaca(placa: string): string {
+    const placaUpper = placa.toUpperCase();
+
   }
 
 

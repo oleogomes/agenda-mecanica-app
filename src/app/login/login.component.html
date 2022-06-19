@@ -27,11 +27,11 @@
           role="alert"
           *ngIf="f.submitted && username.invalid"
         >
-          Username is required!
+          Username é obrigatório!
         </div>
       </div>
       <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password">Senha</label>
         <input
           type="password"
           class="form-control"
@@ -46,9 +46,9 @@
           role="alert"
           *ngIf="f.submitted && password.invalid"
         >
-          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.required">Senha é obrigatória</div>
           <div *ngIf="password.errors.minlength">
-            Password must be at least 6 characters
+            A senha deve conter no mínimo 6 caracteres
           </div>
         </div>
       </div>
@@ -56,6 +56,9 @@
         <button class="btn btn-primary btn-block">
           Login
         </button>
+      </div>
+      <div class="form-group">
+        Não possui cadastro ainda? Clique <a href="/register">aqui</a> para se cadastrar agora mesmo!
       </div>
       <div class="form-group">
         <div

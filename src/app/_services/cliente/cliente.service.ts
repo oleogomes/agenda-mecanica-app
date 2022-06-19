@@ -37,9 +37,10 @@ export class ClienteService {
     }, httpOptions)
   }
 
-  getServicosCliente(idCliente: number): Observable<Servico[]> {
-    return this.http.post<Servico[]>(CLIENTE_API + 'servicos/listar', {
-      idCliente: idCliente
-    }, httpOptions)
+  getServicosCliente(idCliente): Observable<Servico[]> {
+    return this.http.post<Servico[]>(CLIENTE_API + `servicos/listar?idCliente=${idCliente}`, {
+    }, httpOptions);
   }
+
+
 }
