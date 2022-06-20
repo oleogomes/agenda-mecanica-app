@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AlertService } from './../core/_alert/alert.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth/auth.service';
 
@@ -9,14 +11,15 @@ import { AuthService } from '../_services/auth/auth.service';
 export class RegisterComponent implements OnInit {
 
   form: any = {};
-  isSuccessful = false;
-  isSignUpFailed = false;
-  errorMessage = '';
+  optionsAlert = {
+    autoClose: true,
+    keepAfterRouteChange: true
+  };
 
   @Input()
   role: string = 'ROLE_CLIENTE';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, protected alertService: AlertService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -25,14 +28,26 @@ export class RegisterComponent implements OnInit {
     this.form.roles = [this.role];
     this.authService.register(this.form).subscribe(
       data => {
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
+        if(this.cadastroCliente()) {
+          this.alertService.success('Registro realizado com sucesso, faça login agora mesmo!', this.optionsAlert);
+          this.router.navigateByUrl('/login');
+        } else {
+          this.alertService.success('Registro realizado com sucesso!', this.optionsAlert);
+          this.router.navigateByUrl('/admin/equipe')
+        }
       },
       err => {
-        this.errorMessage = err.error.message;
-        this.isSignUpFailed = true;
+        this.alertService.error(err.error.message, this.optionsAlert);
       }
     );
+  }
+
+  cadastroCliente(): boolean {
+    return this.role === 'ROLE_CLIENTE';
+  }
+
+  returnTituloCadastro(): string {
+    return this.cadastroCliente() ? 'Cadastro' : 'Novo mecânico';
   }
 
 }

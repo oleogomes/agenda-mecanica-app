@@ -1,0 +1,50 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <h2 class="titulo-cadastro">Novo serviço</h2>
+    <form
+      [formGroup]="form"
+    >
+    <div class="form-group">
+      <label for="descricao">Descrição</label>
+      <input
+        type="text"
+        class="form-control"
+        name="descricao"
+        formControlName="descricao"
+      />
+      <div class="alert-danger" *ngIf="validarCampos('descricao')">
+        *
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="tempoServico">Horas de serviço</label>
+        <input
+          type="number"
+          class="form-control"
+          name="tempoServico"
+          formControlName="tempoServico"
+          required
+        />
+        <div class="alert-danger" *ngIf="validarCampos('tempoServico')">
+          *
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="valor">Valor</label>
+        <input
+          class="form-control"
+          name="valor"
+          formControlName="valor"
+          required
+          [textMask]="{mask: MASKS.currency.textMask}"
+        />
+        <div class="alert-danger" *ngIf="validarCampos('valor')">
+          *
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" (click)="cadastrarServico()">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>

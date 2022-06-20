@@ -6,10 +6,19 @@
         <a href="/admin/equipe" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/equipe">Equipe</a>
       </li>
       <li class="nav-item">
+        <a href="/admin/novo-mecanico" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/novo-mecanico">Cadastrar mecânico</a>
+      </li>
+      <li class="nav-item">
         <a href="/admin/clientes" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/clientes">Clientes</a>
       </li>
       <li class="nav-item">
-        <a href="/admin/servicos" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/servicos">Serviços</a>
+        <a href="/admin/novo-servico" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/novo-servico">Cadastrar serviço</a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/servicos" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/servicos">Servicos</a>
+      </li>
+      <li class="nav-item">
+        <a href="/admin/tipos-servico" class="nav-link" *ngIf="showAdminBoard" routerLink="admin/tipos-servico">Tipos de serviço</a>
       </li>
       <li class="nav-item">
         <a href="/cliente/novo-carro" class="nav-link" *ngIf="showClienteBoard" routerLink="cliente/novo-carro">Cadastrar carro</a>
@@ -48,6 +57,7 @@
   </nav>
 
   <div class="container">
+    <alert></alert>
     <router-outlet></router-outlet>
   </div>
 </div>

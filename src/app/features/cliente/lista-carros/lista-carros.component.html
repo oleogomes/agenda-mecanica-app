@@ -4,7 +4,7 @@
   <table mat-table [dataSource]="carros" class="mat-elevation-z8">
     <ng-container matColumnDef="placa">
       <th mat-header-cell *matHeaderCellDef>Placa</th>
-      <td mat-cell *matCellDef="let carro">{{ carro.placa }}</td>
+      <td mat-cell *matCellDef="let carro">{{ carro.placa | placa }}</td>
     </ng-container>
 
     <ng-container matColumnDef="marca">

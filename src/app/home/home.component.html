@@ -4,7 +4,7 @@
       src="../../assets/home-image.png"
       alt="imagem promocional mecanica bayer"
     />
-    <div class="botoes-home">
+    <div class="botoes-home" *ngIf="!usuarioLogado">
       <a mat-raised-button color="primary" href="/login">Login</a>
       <a mat-raised-button color="primary" href="/register">Cadastre-se</a>
     </div>

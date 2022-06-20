@@ -7,6 +7,7 @@ import { TokenStorageService } from './../../../_services/token/token-storage.se
 import { Carro } from './../../../models/carro/carro.model';
 import { Servico } from './../../../models/servico/servico.model';
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/core/_alert';
 
 @Component({
   selector: 'app-mecanico-agenda',
@@ -23,8 +24,13 @@ export class MecanicoAgendaComponent implements OnInit {
     INICIADO: 2,
     FINALIZADO: 3
   };
+  optionsAlert = {
+    autoClose: true,
+    keepAfterRouteChange: true
+  };
 
-  constructor(private tokenService: TokenStorageService, private mecanicoService: MecanicoService, private router: Router) { }
+  constructor(private tokenService: TokenStorageService, private mecanicoService: MecanicoService,
+    private router: Router, protected alertService: AlertService) { }
 
   ngOnInit(): void {
     this.getServicos();
@@ -64,11 +70,15 @@ export class MecanicoAgendaComponent implements OnInit {
       idMecanico: this.getUsuarioLogado()
     }
 
-    this.mecanicoService.iniciaServico(atualizarServico).subscribe({
-      next: (sucess) => {
-       location.reload();
+    this.mecanicoService.iniciaServico(atualizarServico).subscribe(
+      (sucess) => {
+      this.alertService.success('Servico iniciado com sucesso', this.optionsAlert)
+      this.router.navigateByUrl('mecanico/agenda');
+      },
+      (err) => {
+      this.alertService.error('Ocorreu algum erro ao iniciar o servico', this.optionsAlert)
       }
-    })
+    )
   }
 
   finalizarServico(servico: Servico) {
@@ -77,11 +87,15 @@ export class MecanicoAgendaComponent implements OnInit {
       idMecanico: this.getUsuarioLogado()
     }
 
-    this.mecanicoService.finalizarServico(atualizarServico).subscribe({
-      next: (sucess) => {
-        location.reload();
+    this.mecanicoService.finalizarServico(atualizarServico).subscribe(
+      (sucess) => {
+      this.alertService.success('Servico iniciado com sucesso', this.optionsAlert);
+      this.router.navigateByUrl('mecanico/agenda');
+      },
+      (err) => {
+      this.alertService.error('Ocorreu algum erro ao iniciar o servico', this.optionsAlert)
       }
-    })
+    )
   }
 
   servicoPodeSerIniciado(servico) {
@@ -100,6 +114,10 @@ export class MecanicoAgendaComponent implements OnInit {
     if(this.mostrarTextoAcoes(servico)) {
       return `Iniciado por ${servico.mecanico.username}`;
     }
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
 }

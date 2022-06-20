@@ -15,11 +15,9 @@ export class BoardUserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUserBoard().subscribe(
       data => {
-        debugger;
         this.content = data;
       },
       err => {
-        debugger;
         this.content = JSON.parse(err.error).message;
       }
     );

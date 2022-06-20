@@ -1,1 +1,31 @@
-<p>lista-clientes works!</p>
+<app-page-content titulo = "Clientes">
+  <table mat-table [dataSource]="clientes" class="mat-elevation-z8" *ngIf="clientes.length">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Código</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="servicos">
+      <th mat-header-cell *matHeaderCellDef>Quantidade serviços</th>
+      <td mat-cell *matCellDef="let cliente">{{ cliente.servicos }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <div class="bottom-clientes">
+    <h3 *ngIf="!isLoading && clientes.length < 1">
+      Você ainda não possui nenhum cliente cadastrado!
+    </h3>
+  </div>
+  </app-page-content>

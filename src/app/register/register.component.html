@@ -1,8 +1,7 @@
 <div class="col-md-12">
   <div class="card card-container">
-    <h2 class="titulo-cadastro">Cadastro</h2>
+    <h2 class="titulo-cadastro">{{returnTituloCadastro()}}</h2>
     <form
-      *ngIf="!isSuccessful"
       name="form"
       (ngSubmit)="f.form.valid && onSubmit()"
       #f="ngForm"
@@ -18,7 +17,7 @@
         required
         minlength="3"
         maxlength="144"
-        #username="ngModel"
+        #nome="ngModel"
       />
       <div class="alert-danger" *ngIf="f.submitted && nome.invalid">
         <div *ngIf="nome.errors.required">Nome é obrigatorio</div>
@@ -91,17 +90,9 @@
       <div class="form-group">
         <button class="btn btn-primary btn-block">Cadastrar</button>
       </div>
-      <div class="form-group">
+      <div *ngIf="cadastroCliente()" class="form-group">
         Já possui cadastro? Clique <a href="/login">aqui</a> para ir para a página de login!
       </div>
-
-      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
-        O cadastro falhou!<br />{{ errorMessage }}
-      </div>
     </form>
-
-    <div class="alert alert-success" *ngIf="isSuccessful">
-      Cadastro realizado com sucesso!
-    </div>
   </div>
 </div>

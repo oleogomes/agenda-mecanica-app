@@ -1,3 +1,4 @@
+import { AlertService } from './../../../core/_alert/alert.service';
 import { Router } from '@angular/router';
 import { AgendarServico } from './../../../models/servico/agendar-servico.model';
 import { TokenStorageService } from './../../../_services/token/token-storage.service';
@@ -17,8 +18,14 @@ import { Component, OnInit } from '@angular/core';
 export class AgendarServicoComponent implements OnInit {
 
   form: FormGroup;
+  submitted = false;
+  carrosGet = false;
   tiposServico: TipoServico[];
   carrosCliente: CarroResponse[];
+  optionsAlert = {
+    autoClose: true,
+    keepAfterRouteChange: true
+  };
   horas = [
     '08:00',
     '09:00',
@@ -37,7 +44,7 @@ export class AgendarServicoComponent implements OnInit {
     return day !== 0 && day !== 6;
   };
 
-  constructor(private clienteService: ClienteService, private carroService: CarroService, private router: Router,
+  constructor(private clienteService: ClienteService, private carroService: CarroService, private router: Router, protected alertService: AlertService,
     private servicoService: ServicoService, private formBuilder: FormBuilder, private tokenService: TokenStorageService ) { }
 
   ngOnInit(): void {
@@ -52,7 +59,6 @@ export class AgendarServicoComponent implements OnInit {
       idTipoServico: new FormControl(null, [Validators.required]),
       hora: new FormControl(null, [Validators.required]),
       data: new FormControl(null, [Validators.required]),
-
     });
   }
 
@@ -68,6 +74,7 @@ export class AgendarServicoComponent implements OnInit {
     const cliente = this.tokenService.getUser();
     this.carroService.getCarrosByPessoa(cliente.id).subscribe({
       next: (carros) => {
+        this.carrosGet = true;
         this.carrosCliente = carros;
       }
     })
@@ -86,13 +93,21 @@ export class AgendarServicoComponent implements OnInit {
   }
 
   agendarServico() {
+    this.submitted = true;
     if(this.form.valid) {
       const servico = this.montaRequest();
-      this.clienteService.agendarServico(servico).subscribe({
-        next: (data) => {
-          this.router.navigateByUrl('/cliente/servicos/listar')
-           }
-      })
+      this.clienteService.agendarServico(servico).subscribe(
+        (data) => {
+          this.alertService.success('Serviço agendado com sucesso!', this.optionsAlert);
+          this.router.navigateByUrl('/cliente/servicos/listar');
+        },
+        (err) => {
+          this.alertService.error('Ocorreu algum erro ao agendar o serviço!', this.optionsAlert)
+        }
+
+      )
+    } else {
+      this.alertService.error('Revise os campos obrigatórios!', this.optionsAlert)
     }
   }
 
@@ -126,6 +141,14 @@ export class AgendarServicoComponent implements OnInit {
      } else {
        return '0'+ dia.toString()
      }
+  }
+
+  validarCampos(formControl: string): boolean {
+    return this.form.get(formControl).invalid && this.submitted;
+  }
+
+  nenhumCarroCadastrado(): boolean {
+    return this.carrosGet && this.carrosCliente.length === 0;
   }
 
 }

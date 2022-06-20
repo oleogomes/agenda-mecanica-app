@@ -1,34 +1,64 @@
-<app-page-content titulo="Cadastrar carro">
-    <form [formGroup]="form" class="form-cadastro-carro">
-      <mat-form-field appearance="fill">
-        <mat-label>Placa</mat-label>
-        <input matInput formControlName="placa" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Ano modelo</mat-label>
-        <input matInput formControlName="anoModelo" />
-      </mat-form-field>
-      <mat-form-field appearance="fill">
+<div class="col-md-12">
+  <div class="card card-container">
+    <h2 class="titulo-cadastro">Cadastrar carro</h2>
+    <form
+      [formGroup]="form"
+    >
+    <div class="form-group">
+      <label for="placa">Placa</label>
+      <input
+        type="text"
+        class="form-control"
+        name="placa"
+        formControlName="placa"
+      />
+      <div class="alert-danger" *ngIf="validarCampos('placa')">
+        *
+      </div>
+    </div>
+      <div class="form-group">
+        <label for="anoModelo">Ano modelo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="anoModelo"
+          formControlName="anoModelo"
+          required
+        />
+        <div class="alert-danger" *ngIf="validarCampos('anoModelo')">
+          *
+        </div>
+      </div>
+      <div class="form-group">
         <mat-label>Marca</mat-label>
-        <mat-select formControlName="marca" name="marca">
+        <mat-select formControlName="marca" name="marca" class="form-control">
           <mat-option *ngFor="let marca of marcasCarro" [value]="marca.id">
             {{ marca.descricao }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
+        <div class="alert-danger" *ngIf="validarCampos('marca')">
+          *
+        </div>
+      </div>
+      <div class="form-group">
         <mat-label>Modelo</mat-label>
         <mat-select
           [disabled]="!form.get('marca').value"
           formControlName="codigoModeloCarro"
           name="modelo"
+          class="form-control"
         >
           <mat-option *ngFor="let modelo of modelosCarro" [value]="modelo.id">
             {{ modelo.descricao }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
-
-      <button mat-raised-button color="primary" (click)="cadastrarCarro()">Cadastrar</button>
+        <div class="alert-danger" *ngIf="validarCampos('codigoModeloCarro')">
+          *
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" (click)="cadastrarCarro()">Cadastrar</button>
+      </div>
     </form>
-</app-page-content>
+  </div>
+</div>

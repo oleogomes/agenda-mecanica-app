@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../_services/token/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user/user.service';
 
@@ -8,11 +9,13 @@ import { UserService } from '../_services/user/user.service';
 })
 export class HomeComponent implements OnInit {
 
-  content: string;
-
-  constructor() { }
+  usuarioLogado = false;
+  constructor(private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
+    if(this.tokenStorage.getToken()) {
+      this.usuarioLogado = true;
+    }
   }
 
 }

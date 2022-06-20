@@ -22,11 +22,21 @@ export class AdminService {
     }, httpOptions);
   }
 
+  getClientes(): Observable<any> {
+    return this.http.post(ADMIN_API + 'relatorios/lista-clientes', {
+    }, httpOptions);
+  }
+
   cadastrarTipoServico( tipoServico: TipoServico): Observable<any> {
     return this.http.post(ADMIN_API + 'servicos/cadastrar', {
       tempo: tipoServico.tempo,
       valor: tipoServico.valor,
       descricao: tipoServico.descricao
+    }, httpOptions);
+  }
+
+  getServicos(): Observable<any> {
+    return this.http.post(ADMIN_API + 'servicos/listar', {
     }, httpOptions);
   }
 

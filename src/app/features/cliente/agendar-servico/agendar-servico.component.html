@@ -1,39 +1,57 @@
-<app-page-content titulo="Agendar serviço">
-  <mat-card>
-    <mat-card-subtitle> Preencha os dados para agendar o serviço:</mat-card-subtitle>
-    <form [formGroup]="form" class="form-agendar-servico">
-      <mat-form-field appearance="fill">
+<div class="col-md-12">
+  <div class="card card-container">
+    <h2 class="titulo-cadastro">Agendar serviço</h2>
+    <form [formGroup]="form">
+      <div class="form-group">
         <mat-label>Carro</mat-label>
-        <mat-select formControlName="idCarro" name="carro">
+        <mat-select formControlName="idCarro" name="carro" class="form-control">
           <mat-option *ngFor="let carro of carrosCliente" [value]="carro.id">
-            {{ carro.placa }} - {{carro.marca}}/{{carro.modelo}} {{carro.anoModelo}}
+            {{ carro.placa }} - {{ carro.marca }}/{{ carro.modelo }}
+            {{ carro.anoModelo }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Serviço</mat-label>
-        <mat-select formControlName="idTipoServico" name="servico">
+        <div class="alert-danger" *ngIf="validarCampos('idCarro')">*</div>
+        <mat-card-content *ngIf="nenhumCarroCadastrado()">
+          Parece que você não possui nenhum carro cadastrado na plataforma
+          ainda, clique <a href="/cliente/novo-carro">aqui</a> para ir para a
+          página de cadastro de veículos.
+        </mat-card-content>
+      </div>
+
+      <div class="form-group">
+        <label for="servico">Serviço</label>
+        <mat-select formControlName="idTipoServico" name="servico" class="form-control">
           <mat-option *ngFor="let servico of tiposServico" [value]="servico.id">
-            {{ servico.descricao }} - R${{servico.valor}},00
+            {{ servico.descricao }} - {{ servico.valor | currencyBrazil }}
           </mat-option>
         </mat-select>
-      </mat-form-field>
-      <mat-form-field appearance="fill" >
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="data">
+        <div class="alert-danger" *ngIf="validarCampos('idTipoServico')">*</div>
+      </div>
+
+      <div class="form-group">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data" class="form-control" />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
+        <div class="alert-danger" *ngIf="validarCampos('data')">*</div>
+      </div>
+
+      <div class="form-group">
         <mat-label>Horário</mat-label>
-        <mat-select formControlName="hora" name="hora">
+        <mat-select formControlName="hora" name="hora" class="form-control">
           <mat-option *ngFor="let hora of horas" [value]="hora">
-            {{ hora}}hs
+            {{ hora }}hs
           </mat-option>
         </mat-select>
-      </mat-form-field>
-      <button mat-raised-button color="primary" (click)="agendarServico()">Agendar</button>
+        <div class="alert-danger" *ngIf="validarCampos('data')">*</div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" (click)="agendarServico()">
+          Agendar
+        </button>
+      </div>
     </form>
-  </mat-card>
-</app-page-content>
+  </div>
+</div>

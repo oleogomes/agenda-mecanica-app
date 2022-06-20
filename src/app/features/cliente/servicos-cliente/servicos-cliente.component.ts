@@ -13,7 +13,7 @@ export class ServicosClienteComponent implements OnInit {
 
   servicos: Servico[];
   isLoading = true;
-  displayedColumns: string[] = ['dataHora','carro', 'tipo', 'status'];
+  displayedColumns: string[] = ['dataHora', 'placa', 'carro', 'tipo', 'valor', 'status'];
 
   constructor(private tokenService: TokenStorageService, private clienteService: ClienteService) { }
 
@@ -31,18 +31,14 @@ export class ServicosClienteComponent implements OnInit {
   }
 
   getUsuarioLogado(){
-    debugger;
    return this.tokenService.getUser().id;
   }
 
   retornaCarro(servico): string {
-    debugger;
-    const placa = servico.carro.placa;
     const marca = servico.carro.marca;
     const modelo = servico.carro.modelo;
     const ano = servico.carro.anoModelo;
-    const retorno = `${placa} | ${marca}/${modelo} | ${ano}`
-    debugger;
+    const retorno = `${marca}/${modelo} | ${ano}`
     return retorno;
   }
 

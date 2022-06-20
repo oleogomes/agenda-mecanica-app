@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AdminService } from './../../../_services/admin/admin.service';
+import { Cliente } from './../../../models/pessoa/cliente.model';
+
 @Component({
   selector: 'app-lista-clientes',
   templateUrl: './lista-clientes.component.html',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaClientesComponent implements OnInit {
 
-  constructor() { }
+  clientes: Cliente[];
+  isLoading = true;
+  displayedColumns: string[] = ['id', 'nome', 'email', 'servicos'];
+
+  constructor(private service: AdminService) { }
 
   ngOnInit(): void {
+    this.carregaClientes();
+  }
+
+  carregaClientes() {
+   this.service.getClientes().subscribe({
+      next: data => {
+        this.clientes = data;
+        this.isLoading = false;
+      }
+    })
   }
 
 }

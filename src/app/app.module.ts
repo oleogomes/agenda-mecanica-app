@@ -1,3 +1,6 @@
+import { CadastrarMecanicoComponent } from './features/admin/admin-equipe/cadastrar-mecanico/cadastrar-mecanico.component';
+import { AlertComponent } from './core/_alert/alert.component';
+import { AlertModule } from './core/_alert/alert.module'
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,6 +16,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TextMaskModule } from 'angular2-text-mask';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +27,8 @@ import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './core/_helpers/auth.interceptor';
 import { LoaderModule } from './core/loader/loader.module';
 import { PageContentComponent } from './core/page-content/page-content.component';
-import { AdminEquipeComponent } from './features/admin/admin-equipe/admin-equipe.component';
 import { ListaEquipeComponent } from './features/admin/admin-equipe/lista-equipe/lista-equipe.component';
-import { AdminServicosComponent } from './features/admin/admin-servicos/admin-servicos.component';
+import { NovoTipoServicoComponent } from './features/admin/novo-tipo-servico/novo-tipo-servico.component';
 import { ListaClientesComponent } from './features/admin/lista-clientes/lista-clientes.component';
 import { AgendarServicoComponent } from './features/cliente/agendar-servico/agendar-servico.component';
 import { CadastrarCarroComponent } from './features/cliente/cadastrar-carro/cadastrar-carro.component';
@@ -35,6 +39,9 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { MecanicoAgendaComponent } from './features/mecanico/mecanico-agenda/mecanico-agenda.component';
+import { NgBrazil } from 'ng-brazil';
+import { ServicosAdminComponent } from './features/admin/servicos-admin/servicos-admin.component';
+import { TiposServicoComponent } from './features/admin/tipos-servico/tipos-servico.component';
 
 
 @NgModule({
@@ -47,16 +54,18 @@ import { MecanicoAgendaComponent } from './features/mecanico/mecanico-agenda/mec
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    AdminEquipeComponent,
+    CadastrarMecanicoComponent,
     ListaEquipeComponent,
     ListaClientesComponent,
     PageContentComponent,
-    AdminServicosComponent,
+    NovoTipoServicoComponent,
     CadastrarCarroComponent,
     ListaCarrosComponent,
     AgendarServicoComponent,
     ServicosClienteComponent,
-    MecanicoAgendaComponent
+    MecanicoAgendaComponent,
+    ServicosAdminComponent,
+    TiposServicoComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +84,10 @@ import { MecanicoAgendaComponent } from './features/mecanico/mecanico-agenda/mec
     LoaderModule,
     MatSelectModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    TextMaskModule,
+    NgBrazil,
+    AlertModule
   ],
   providers: [authInterceptorProviders, MatDatepickerModule],
   bootstrap: [AppComponent],
