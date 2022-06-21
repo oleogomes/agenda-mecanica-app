@@ -16,10 +16,10 @@ const app = express();
 // app.use(requireHTTPS)
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/agenda-mecanica'));
+app.use(express.static(__dirname + '/dist/agenda-mecanica'));
 
-app.get('/*', function(req, res) {
-    res.sendFile(__dirname + './dist/agenda-mecanica/index.html');
+app.get('/*', (req, res) => {
+    res.sendFile(__dirname + '/dist/agenda-mecanica/index.html');
 });
 
 // Start the app by listening on the default Heroku port
