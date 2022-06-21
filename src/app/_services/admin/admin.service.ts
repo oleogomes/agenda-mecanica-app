@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 
-const ADMIN_API = environment.API + '/admin';
+const ADMIN_API = environment.API + 'admin';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })

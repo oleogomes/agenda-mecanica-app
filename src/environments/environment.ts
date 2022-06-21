@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API: 'http://localhost:8090/agenda-mecanica'
+  API: 'http://localhost:8090/agenda-mecanica/'
 };
 
 /*
