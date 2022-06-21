@@ -9,6 +9,7 @@ import { ServicoService } from './../../../_services/servico/servico.service';
 import { CarroService } from './../../../_services/carro/carro.service';
 import { ClienteService } from './../../../_services/cliente/cliente.service';
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-agendar-servico',
@@ -118,12 +119,12 @@ export class AgendarServicoComponent implements OnInit {
   }
 
   formataData(): string {
-    const data = this.form.get('data')?.value as Date;
-    const ano = data.getFullYear();
-    const mes = this.formataMes(data.getMonth());
-    const dia = this.formataDia(data.getDate());
-    const dataFormatada = `${ano}-${mes}-${dia}`
-    return dataFormatada;
+    debugger;
+    const data = this.form.get('data')?.value;
+    const dataFormatada = moment(data).parseZone() .format('L');
+    const dataSeparada : string[] = dataFormatada.split('/');
+    const dataUs = `${dataSeparada[2]}-${dataSeparada[1]}-${dataSeparada[0]}`
+    return dataUs;
   }
 
   formataMes(mes: number) {

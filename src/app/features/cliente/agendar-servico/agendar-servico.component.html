@@ -31,7 +31,7 @@
       <div class="form-group">
         <mat-label>Data</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="data" class="form-control" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <div class="alert-danger" *ngIf="validarCampos('data')">*</div>

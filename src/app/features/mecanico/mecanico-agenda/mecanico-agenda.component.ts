@@ -8,6 +8,7 @@ import { Carro } from './../../../models/carro/carro.model';
 import { Servico } from './../../../models/servico/servico.model';
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/core/_alert';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-mecanico-agenda',
@@ -71,11 +72,13 @@ export class MecanicoAgendaComponent implements OnInit {
     }
 
     this.mecanicoService.iniciaServico(atualizarServico).subscribe(
-      (sucess) => {
-      this.alertService.success('Servico iniciado com sucesso', this.optionsAlert)
-      this.router.navigateByUrl('mecanico/agenda');
+      data => {
+      this.alertService.success('Servico iniciado com sucesso, a agenda está sendo atualizada.', this.optionsAlert)
+      setTimeout(() => {
+        this.reloadPage();
+      }, 5000);
       },
-      (err) => {
+      err => {
       this.alertService.error('Ocorreu algum erro ao iniciar o servico', this.optionsAlert)
       }
     )
@@ -88,11 +91,13 @@ export class MecanicoAgendaComponent implements OnInit {
     }
 
     this.mecanicoService.finalizarServico(atualizarServico).subscribe(
-      (sucess) => {
-      this.alertService.success('Servico iniciado com sucesso', this.optionsAlert);
-      this.router.navigateByUrl('mecanico/agenda');
+      data => {
+      this.alertService.success('Servico finalizado com sucesso, a agenda está sendo atualizada.', this.optionsAlert);
+      setTimeout(() => {
+        this.reloadPage();
+      }, 5000);
       },
-      (err) => {
+      err => {
       this.alertService.error('Ocorreu algum erro ao iniciar o servico', this.optionsAlert)
       }
     )
