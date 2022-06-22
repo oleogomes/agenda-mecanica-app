@@ -19,12 +19,14 @@
              - Backend: Java 8 / Springboot 2.1.8 / JsonWebToken <br>
              - Banco de dados: PostgreeSql<br>
             </p>
-            <p>
-              Utilize os botôes abaixo para interagir com a aplicação:
-            </p>
-            <div class="botoes-home" *ngIf="!usuarioLogado">
+              <div class="acoes" *ngIf="!usuarioLogado">
+              <p>
+                Utilize os botôes abaixo para interagir com a aplicação:
+              </p>
+              <div class="botoes-home">
               <a mat-raised-button color="primary" href="/login">Login</a>
               <a mat-raised-button color="primary" href="/register">Cadastre-se</a>
+            </div>
             </div>
           </div>
       </mat-card>
@@ -53,7 +55,7 @@
             <span class="mat-tab-titulo">Contato</span>
             <div>
             <p>- Desenvolvido por Leonardo Gomes </p>
-            <p>- Email: leonardo.gomes@rede.ulbra.br </p>
+            <p>- Email: leonardogomes@rede.ulbra.br </p>
             <p>- Repositório Backend: <a href="https://github.com/oleogomes/agenda-mecanica-api">Github</a></p>
             <p>- Repositório Frontend: <a href="https://github.com/oleogomes/agenda-mecanica-app">Github</a></p>
             </div>
