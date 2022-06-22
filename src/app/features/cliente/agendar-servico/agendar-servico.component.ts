@@ -119,7 +119,6 @@ export class AgendarServicoComponent implements OnInit {
   }
 
   formataData(): string {
-    debugger;
     const data = this.form.get('data')?.value;
     const dataFormatada = moment(data).parseZone() .format('L');
     const dataSeparada : string[] = dataFormatada.split('/');

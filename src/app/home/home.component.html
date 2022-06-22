@@ -1,12 +1,65 @@
 <app-page-content titulo="Home">
-  <div class="card-home">
-    <img
-      src="../../assets/home-image.png"
-      alt="imagem promocional mecanica bayer"
-    />
-    <div class="botoes-home" *ngIf="!usuarioLogado">
-      <a mat-raised-button color="primary" href="/login">Login</a>
-      <a mat-raised-button color="primary" href="/register">Cadastre-se</a>
-    </div>
-  </div>
+
+    <mat-card-header>
+      <mat-card-title class="titulo">Mecânica Turbo Bayer</mat-card-title>
+    </mat-card-header>
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab label="Quem somos">
+        <mat-card class="mat-tab">
+        <img src="../../assets/home.jpg" alt="Foto de um capo aberto com duas ferramentas | Créditos: Ryan Doka - Pixabay ">
+        <div class="mat-tab-texto">
+            <span class="mat-tab-titulo">Quem somos</span>
+            <p>
+            Nós somos a Mecânica Turbo Bayer, uma mecânica fictícia, criada exclusivamente para a disciplina de projeto tecnológico do curso de Tecnologia em
+            Sistemas para a Internet da ULBRA - Universidade Luterana do Brasil, câmpus Gravataí/RS. Nosso idealizador é o aluno Leonardo Gomes.
+            </p>
+            <p>
+             As tecnologias utilizadas para desenvolver essa aplicação foram: <br>
+             - Frontend: Angular 10 / Html / Css / TypeScript <br>
+             - Backend: Java 8 / Springboot 2.1.8 / JsonWebToken <br>
+             - Banco de dados: PostgreeSql<br>
+            </p>
+            <p>
+              Utilize os botôes abaixo para interagir com a aplicação:
+            </p>
+            <div class="botoes-home" *ngIf="!usuarioLogado">
+              <a mat-raised-button color="primary" href="/login">Login</a>
+              <a mat-raised-button color="primary" href="/register">Cadastre-se</a>
+            </div>
+          </div>
+      </mat-card>
+      </mat-tab>
+      <mat-tab label="Agenda">
+        <mat-card class="mat-tab">
+
+          <img src="../../assets/agenda.jpg" alt="Foto de um fusca com um mecanico embaixo fazendo manutenção | Créditos: Ryan Doka - Pixabay">
+          <div class="mat-tab-texto">
+            <span class="mat-tab-titulo">Agenda</span>
+            <p>
+              O objetivo desta agenda é facilitar o agendamento de serviços em mecânica. De um lado está o cliente, que não irá precisar ligar, mandar mensagem
+              no Whatsapp ou qualquer outro tipo de contato para agendar um serviço, nem para saber valores e quanto tempo demora um determinado serviço.
+              De outro lado está a mecânica, que através dos mecânicos, consegue visualizar a agenda diária e se preparar para atender melhor os clientes, e
+              através do administrador, consegue visualizar a base de clientes, sua equipe com a quantidade de serviços realizada por cada membro,
+              visualizar todos os serviços agendados e já realizados, adicionar novos mecânicos a equipe, visualizar e adicionar novos tipos de serviço para agendamento.
+            </p>
+
+          </div>
+        </mat-card>
+      </mat-tab>
+      <mat-tab label="Contato">
+        <mat-card class="mat-tab">
+          <img src="../../assets/contato.jpg" alt="Foto de um capo aberto com um homem fazendo manutencao | Créditos: Ryan Doka - Pixabay">
+          <div class="mat-tab-texto">
+            <span class="mat-tab-titulo">Contato</span>
+            <div>
+            <p>- Desenvolvido por Leonardo Gomes </p>
+            <p>- Email: leonardo.gomes@rede.ulbra.br </p>
+            <p>- Repositório Backend: <a href="https://github.com/oleogomes/agenda-mecanica-api">Github</a></p>
+            <p>- Repositório Frontend: <a href="https://github.com/oleogomes/agenda-mecanica-app">Github</a></p>
+            </div>
+          </div>
+        </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+
 </app-page-content>

@@ -73,7 +73,7 @@ export class MecanicoAgendaComponent implements OnInit {
 
     this.mecanicoService.iniciaServico(atualizarServico).subscribe(
       data => {
-      this.alertService.success('Servico iniciado com sucesso, a agenda está sendo atualizada.', this.optionsAlert)
+      this.alertService.success('Servico iniciado com sucesso, a agenda está sendo atualizada...', this.optionsAlert)
       setTimeout(() => {
         this.reloadPage();
       }, 5000);
@@ -92,7 +92,7 @@ export class MecanicoAgendaComponent implements OnInit {
 
     this.mecanicoService.finalizarServico(atualizarServico).subscribe(
       data => {
-      this.alertService.success('Servico finalizado com sucesso, a agenda está sendo atualizada.', this.optionsAlert);
+      this.alertService.success('Servico finalizado com sucesso, a agenda está sendo atualizada...', this.optionsAlert);
       setTimeout(() => {
         this.reloadPage();
       }, 5000);

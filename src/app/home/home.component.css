@@ -8,3 +8,39 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.titulo {
+  font-size: 30px;
+}
+
+img {
+  max-width: 60%;
+  padding-right: 10px;
+}
+
+.mat-tab {
+  display: flex;
+  align-items: center;
+}
+
+.mat-tab-texto {
+  display: flex;
+  flex-direction: column;
+  text-align: justify;
+  width: 100%;
+}
+
+.mat-tab-titulo {
+  align-self: center;
+  font-size: 30px;
+  padding-bottom: 15px;
+}
+
+p, .contato-span {
+  text-indent: 15px;
+}

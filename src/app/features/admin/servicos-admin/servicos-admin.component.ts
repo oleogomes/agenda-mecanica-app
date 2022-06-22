@@ -24,7 +24,6 @@ export class ServicosAdminComponent implements OnInit {
     this.adminService.getServicos().subscribe({
       next: (servicos) => {
         this.servicos = servicos;
-        debugger;
         this.isLoading = false;
       }
     })

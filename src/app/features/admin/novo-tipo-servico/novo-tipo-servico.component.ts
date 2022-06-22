@@ -70,7 +70,6 @@ export class NovoTipoServicoComponent implements OnInit {
   }
 
   formataValor(valor: string): number {
-    debugger;
     const valorSemCifrao = valor.replace('R$ ', '');
     const valorNumber = Number.parseInt(valorSemCifrao);
     return valorNumber;

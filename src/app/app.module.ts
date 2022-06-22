@@ -18,13 +18,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TextMaskModule } from 'angular2-text-mask';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
-import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
-import { BoardUserComponent } from './board-user/board-user.component';
 import { authInterceptorProviders } from './core/_helpers/auth.interceptor';
 import { LoaderModule } from './core/loader/loader.module';
 import { PageContentComponent } from './core/page-content/page-content.component';
@@ -52,9 +50,6 @@ import { TiposServicoComponent } from './features/admin/tipos-servico/tipos-serv
     RegisterComponent,
     HomeComponent,
     ProfileComponent,
-    BoardAdminComponent,
-    BoardModeratorComponent,
-    BoardUserComponent,
     CadastrarMecanicoComponent,
     ListaEquipeComponent,
     ListaClientesComponent,
@@ -89,7 +84,8 @@ import { TiposServicoComponent } from './features/admin/tipos-servico/tipos-serv
     MatMomentDateModule,
     TextMaskModule,
     NgBrazil,
-    AlertModule
+    AlertModule,
+    MatTabsModule
   ],
   providers: [
     authInterceptorProviders,
